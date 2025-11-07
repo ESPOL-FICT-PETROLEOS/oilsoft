@@ -45,10 +45,44 @@ h_tri = triang.rvs(c=0.3, loc=10, scale=80, size=1000)
 h_uni = uniform.rvs(loc=10, scale=80, size=1000)
 
 #plots
-print(h_norm[:10])
+#plots
 
-plt.hist(h_tri, bins=100, color='skyblue', edgecolor='black')
-plt.title("Distribución Triangular - Espesor (h)")
+plt.figure(figsize=(12, 10))
+
+# 1. Normal
+plt.subplot(3, 2, 1)
+plt.hist(h_norm, bins=100, color='skyblue', edgecolor='black')
+plt.title("Normal - Espesor (h)")
 plt.xlabel("Espesor (ft)")
 plt.ylabel("Frecuencia")
+
+# 2. Lognormal
+plt.subplot(3, 2, 2)
+plt.hist(h_lognorm, bins=100, color='lightgreen', edgecolor='black')
+plt.title("Lognormal - Espesor (h)")
+plt.xlabel("Espesor (ft)")
+plt.ylabel("Frecuencia")
+
+# 3. Exponencial
+plt.subplot(3, 2, 3)
+plt.hist(h_expon, bins=100, color='salmon', edgecolor='black')
+plt.title("Exponencial - Espesor (h)")
+plt.xlabel("Espesor (ft)")
+plt.ylabel("Frecuencia")
+
+# 4. Triangular
+plt.subplot(3, 2, 4)
+plt.hist(h_tri, bins=100, color='plum', edgecolor='black')
+plt.title("Triangular - Espesor (h)")
+plt.xlabel("Espesor (ft)")
+plt.ylabel("Frecuencia")
+
+# 5. Uniforme
+plt.subplot(3, 2, 5)
+plt.hist(h_uni, bins=100, color='gold', edgecolor='black')
+plt.title("Uniforme - Espesor (h)")
+plt.xlabel("Espesor (ft)")
+plt.ylabel("Frecuencia")
+
+plt.tight_layout()
 plt.show()
