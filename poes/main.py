@@ -45,7 +45,6 @@ h_tri = triang.rvs(c=0.3, loc=10, scale=80, size=1000)
 h_uni = uniform.rvs(loc=10, scale=80, size=1000)
 
 #plots
-#plots
 
 plt.figure(figsize=(12, 10))
 
