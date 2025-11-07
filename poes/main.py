@@ -51,6 +51,7 @@ bo_tri = triang.rvs(c=0.3, loc=1.1, scale=2, size=1000)
 bo_uni = uniform.rvs(loc=1.1, scale=2, size=1000)
 
 
+
 # Visualización de las distribuciones
 fig, axs = plt.subplots(3, 2, figsize=(10, 10))
 axs = axs.flatten()
