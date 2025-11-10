@@ -70,3 +70,39 @@ plt.show()
 
 
 #%% Generate random values for Thickness - Lissette
+#%% Generate random values for Initial water saturation - César
+#Ya estan importadas las librerias por lo tanto pasamos al código.
+
+#Distribución normal
+swi_norm = norm.rvs(loc=0.45,  scale=0.15, size=1000)
+#Definimos un límite mínimo y máximo (0-1)
+swi_norm = np.where(swi_norm < 0, 0, swi_norm)
+swi_norm = np.where(swi_norm > 1, 1, swi_norm)
+
+#Repetimos el código para las otras distribuciones
+
+#Distribución lognormal
+swi_lognorm = lognorm.rvs(s=0.15, loc=0, scale=0.05, size=1000)
+swi_lognorm = np.where(swi_lognorm < 0, 0, swi_lognorm)
+swi_lognorm = np.where(swi_lognorm > 1, 1, swi_lognorm)
+
+#Destribución exponencial
+swi_expon = expon.rvs(loc= 0, scale= 0.2, size=1000)
+swi_expon = np.where(swi_expon < 0, 0, swi_expon)
+swi_expon = np.where(swi_expon > 1, 1, swi_expon)
+
+#Distribución triangular
+swi_tri = triang.rvs(c=0.3, loc=0.1, scale= 0.9, size=1000)
+swi_tri = np.where(swi_tri < 0, 0, swi_tri)
+swi_tri = np.where(swi_tri > 1, 1, swi_tri)
+
+#Distribución uniforme
+swi_uni = uniform.rvs(loc=0.1 , scale=0.9, size=1000)
+swi_uni = np.where(swi_uni < 0, 0, swi_uni)
+swi_uni = np.where(swi_uni > 1, 1, swi_uni)
+
+print(swi_expon)
+
+# Visualize distributions
+plt.hist(swi_uni, bins=100)
+plt.show()
