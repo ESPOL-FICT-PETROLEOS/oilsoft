@@ -68,19 +68,40 @@ def main():
 
     results_dict = {}
 
-    for col, idx, in input_dict.items():
-        results_dict[col] = param_stoiip(df_poes, idx, DISTRIBUTION, LOC, SCALE, realizations,
-                                         C, LIM_MIN, LIM_MAX, seed)
+    for (
+        col,
+        idx,
+    ) in input_dict.items():
+        results_dict[col] = param_stoiip(
+            df_poes,
+            idx,
+            DISTRIBUTION,
+            LOC,
+            SCALE,
+            realizations,
+            C,
+            LIM_MIN,
+            LIM_MAX,
+            seed,
+        )
 
     # Calculate Stochastic Stoiip into results_dict
-    results_dict[POES_PROB] = poes(results_dict[area_col], results_dict[h_col], results_dict[poro_col],
-                                   results_dict[swi_col], results_dict[boi_col])
+    results_dict[POES_PROB] = poes(
+        results_dict[area_col],
+        results_dict[h_col],
+        results_dict[poro_col],
+        results_dict[swi_col],
+        results_dict[boi_col],
+    )
 
     # Calculate mean, std, P90, P50, P10 from STOIIP
-    summary_stoc_results = [results_dict[POES_PROB].mean(), results_dict[POES_PROB].std(),
-                            np.percentile(results_dict[POES_PROB], 10),
-                            np.percentile(results_dict[POES_PROB], 50),
-                            np.percentile(results_dict[POES_PROB], 90)]
+    summary_stoc_results = [
+        results_dict[POES_PROB].mean(),
+        results_dict[POES_PROB].std(),
+        np.percentile(results_dict[POES_PROB], 10),
+        np.percentile(results_dict[POES_PROB], 50),
+        np.percentile(results_dict[POES_PROB], 90),
+    ]
 
     # Send stochastic values to Excel
     sheet[POES_PROB].options(transpose=True).value = summary_stoc_results
@@ -92,7 +113,9 @@ def main():
     df_results = pd.DataFrame(results_dict)
 
     # Send df_results to Results sheet in Ms. Excel
-    sheet_re[POES_ARRAY].options(pd.DataFrame, expand="table", index=False).value = df_results
+    sheet_re[POES_ARRAY].options(pd.DataFrame, expand="table", index=False).value = (
+        df_results
+    )
 
     # Create Histogram from Stochastic Stoiip
     eng_formatter = ticker.EngFormatter()
